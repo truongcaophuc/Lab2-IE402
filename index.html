@@ -118,6 +118,9 @@
             const railing4 = new GeoJSONLayer({
                 url: "./railing4.geojson"
             });
+            const pillar = new GeoJSONLayer({
+                url: "./pillar.geojson"
+            });
             building.renderer = {
                 type: "simple",
                 symbol: {
@@ -127,6 +130,16 @@
                         size: 120,
                         material: {
                             color: "#bcd7d8"
+                        },
+                        transform: {
+                            rotate: {
+                                x: 90,  // Xoay 30 độ quanh trục X để tạo độ nghiêng
+                                y: 0,
+                                z: 0
+                            },
+                            translate: {
+                                z: 100  // Dịch chuyển đối tượng lên cao 10 đơn vị trên trục Z
+                            }
                         }
                     }]
                 }
@@ -196,11 +209,24 @@
                     }]
                 }
             };
+            pillar.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 80,
+                        material: {
+                            color: "#c1c1c1"
+                        }
+                    }]
+                }
+            };
             // Khởi tạo bản đồ
             const map = new Map({
                 basemap: "topo-vector",
                 ground: "world-elevation",
-                layers: [building,floor,railing1,railing2,railing3,railing4]
+                layers: [building,floor,railing1,railing2,railing3,railing4,pillar]
             });
 
             // Khởi tạo SceneView và MapView trên cùng một `viewDiv`
