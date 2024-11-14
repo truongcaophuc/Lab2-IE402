@@ -100,25 +100,25 @@
             }
 
             // Khởi tạo lớp GeoJSON
-            const layout1 = new GeoJSONLayer({
-                url: "./layout1.geojson"
+            const building = new GeoJSONLayer({
+                url: "./building.geojson"
             });
-            const layout2 = new GeoJSONLayer({
-                url: "./layout2.geojson"
+            const floor = new GeoJSONLayer({
+                url: "./floor.geojson"
             });
-            const layout3 = new GeoJSONLayer({
-                url: "./layout3.geojson"
+            const railing1 = new GeoJSONLayer({
+                url: "./railing1.geojson"
             });
-            const layout4 = new GeoJSONLayer({
-                url: "./layout4.geojson"
+            const railing2 = new GeoJSONLayer({
+                url: "./railing2.geojson"
             });
-            const layout5 = new GeoJSONLayer({
-                url: "./layout5.geojson"
+            const railing3 = new GeoJSONLayer({
+                url: "./railing3.geojson"
             });
-            const layout6 = new GeoJSONLayer({
-                url: "./layout6.geojson"
+            const railing4 = new GeoJSONLayer({
+                url: "./railing4.geojson"
             });
-            layout1.renderer = {
+            building.renderer = {
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
@@ -131,7 +131,7 @@
                     }]
                 }
             };
-            layout2.renderer = {
+            floor.renderer = {
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
@@ -144,7 +144,7 @@
                     }]
                 }
             };
-            layout3.renderer = {
+            railing1.renderer = {
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
@@ -157,7 +157,7 @@
                     }]
                 }
             };
-            layout4.renderer = {
+            railing2.renderer = {
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
@@ -170,7 +170,7 @@
                     }]
                 }
             };
-            layout5.renderer = {
+            railing3.renderer = {
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
@@ -183,7 +183,7 @@
                     }]
                 }
             };
-            layout6.renderer = {
+            railing4.renderer = {
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
@@ -200,7 +200,7 @@
             const map = new Map({
                 basemap: "topo-vector",
                 ground: "world-elevation",
-                layers: [layout1,layout2,layout3,layout4,layout5,layout6]
+                layers: [building,floor,railing1,railing2,railing3,railing4]
             });
 
             // Khởi tạo SceneView và MapView trên cùng một `viewDiv`
