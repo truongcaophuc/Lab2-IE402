@@ -44,8 +44,12 @@
             "esri/views/SceneView",
             "esri/layers/GeoJSONLayer",
             "esri/Graphic",
-            "esri/views/MapView"
-        ], function(Map, SceneView, GeoJSONLayer, Graphic, MapView) {
+            "esri/views/MapView",
+            "esri/layers/GraphicsLayer",
+            "esri/geometry/Mesh",
+            "esri/symbols/MeshSymbol3D",
+            "esri/symbols/FillSymbol3DLayer"
+        ], function(Map, SceneView, GeoJSONLayer, Graphic, MapView, GraphicsLayer, Mesh, MeshSymbol3D, FillSymbol3DLayer) {
 
             var list_points = [];
             var string_points = "";
@@ -99,6 +103,58 @@
                 });
             }
 
+            
+            // lang tru tam giac
+            // Định nghĩa Mesh cho hình lăng trụ tam giác
+            // const prismMesh = new Mesh({
+            // components: [
+            //     {
+            //     faces: [
+            //         // Định nghĩa các mặt của lăng trụ tam giác bằng các đỉnh
+            //         [0, 1, 2],    // Mặt tam giác đầu
+            //         [3, 4, 5],    // Mặt tam giác cuối
+            //         [0, 1, 4, 3], // Mặt chữ nhật bên dưới
+            //         [1, 2, 5, 4], // Mặt chữ nhật bên phải
+            //         [2, 0, 3, 5]  // Mặt chữ nhật bên trái
+            //     ],
+            //     vertices: [
+            //         // Định nghĩa các tọa độ cho các đỉnh
+            //         [106.79591438610504, 10.869484710813637, 0],    // Đỉnh 0 của tam giác đầu
+            //         [106.79591438610504,
+            //         10.870066352570888, 0],    // Đỉnh 1 của tam giác đầu
+            //         [2.5, 4.33, 0], // Đỉnh 2 của tam giác đầu
+            //         [106.79605207203167,
+            //         10.869484710813637, -10],  // Đỉnh 3 của tam giác cuối
+            //         [106.79605207203167,
+            //         10.870066352570888, -10],  // Đỉnh 4 của tam giác cuối
+            //         [2.5, 4.33, -10] // Đỉnh 5 của tam giác cuối
+            //     ]
+            //     }
+            // ]
+            // });
+
+            // Tạo symbol 3D cho lăng trụ tam giác
+            // const symbol = new MeshSymbol3D({
+            // symbolLayers: [
+            //     new FillSymbol3DLayer({
+            //     material: { color: "blue" }, // màu sắc của lăng trụ
+            //     edges: {
+            //         type: "solid",
+            //         color: [0, 0, 0, 0.5] // màu và độ trong suốt của cạnh
+            //     }
+            //     })
+            // ]
+            // });
+
+            // Tạo Graphic với hình lăng trụ tam giác
+            // const graphic = new Graphic({
+            //     geometry: prismMesh,
+            //     symbol: symbol
+            // });
+
+            // // Thêm lăng trụ tam giác vào GraphicsLayer
+            // graphicsLayer.add(graphic);
+
             // Khởi tạo lớp GeoJSON
             const building = new GeoJSONLayer({
                 url: "./building.geojson"
@@ -138,7 +194,7 @@
                         type: "extrude",
                         size: 120,
                         material: {
-                            color: "#bcd7d8"
+                            color: "#a1bee3"
                         },
                         transform: {
                             rotate: {
@@ -286,7 +342,10 @@
                 popup: { defaultPopupTemplateEnabled: true }
             });
             addGeoJSONLayer(map,"./ladder1.geojson", [153, 217, 234, 0.8]);
+            addGeoJSONLayer(map,"./roof.geojson", "#c1c1c1");
 
+            // const graphicsLayer = new GraphicsLayer();
+            // map.add(graphicsLayer);
             // Sự kiện click để lấy tọa độ và sao chép vào clipboard
             view.on("click", function(event) {
                 view.hitTest(event).then(function(hitTestResults) {
