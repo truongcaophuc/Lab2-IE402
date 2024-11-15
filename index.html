@@ -127,6 +127,9 @@
             const railing_bacthem = new GeoJSONLayer({
                 url: "./railing-bacthem.geojson"
             });
+            const rooftop = new GeoJSONLayer({
+                url: "./rooftop.geojson"
+            });
             building.renderer = {
                 type: "simple",
                 symbol: {
@@ -254,11 +257,24 @@
                     }]
                 }
             };
+            rooftop.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 2,
+                        material: {
+                            color: "#f2ebc4"
+                        }
+                    }]
+                }
+            };
             // Khởi tạo bản đồ
             const map = new Map({
                 basemap: "topo-vector",
                 ground: "world-elevation",
-                layers: [building,floor,railing1,railing2,railing3,railing4,pillar, bacthem, railing_bacthem]
+                layers: [building,floor,railing1,railing2,railing3,railing4,pillar, bacthem, railing_bacthem, rooftop]
             });
 
             // Khởi tạo SceneView và MapView trên cùng một `viewDiv`
