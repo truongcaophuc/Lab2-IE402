@@ -121,6 +121,12 @@
             const pillar = new GeoJSONLayer({
                 url: "./pillar.geojson"
             });
+            const bacthem = new GeoJSONLayer({
+                url: "./bac-them.geojson"
+            });
+            const railing_bacthem = new GeoJSONLayer({
+                url: "./railing-bacthem.geojson"
+            });
             building.renderer = {
                 type: "simple",
                 symbol: {
@@ -152,7 +158,7 @@
                         type: "extrude",
                         size: 2,
                         material: {
-                            color: "#bcd7d8"
+                            color: "#f2ebc4"
                         }
                     }]
                 }
@@ -222,11 +228,37 @@
                     }]
                 }
             };
+            bacthem.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 2,
+                        material: {
+                            color: "#f2ebc4"
+                        }
+                    }]
+                }
+            };
+            railing_bacthem.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 10,
+                        material: {
+                            color: "#bcd7d8"
+                        }
+                    }]
+                }
+            };
             // Khởi tạo bản đồ
             const map = new Map({
                 basemap: "topo-vector",
                 ground: "world-elevation",
-                layers: [building,floor,railing1,railing2,railing3,railing4,pillar]
+                layers: [building,floor,railing1,railing2,railing3,railing4,pillar, bacthem, railing_bacthem]
             });
 
             // Khởi tạo SceneView và MapView trên cùng một `viewDiv`
@@ -237,7 +269,7 @@
                 zoom: 19,
                 popup: { defaultPopupTemplateEnabled: true }
             });
-            addGeoJSONLayer(map,"./ladder.geojson", [153, 217, 234, 0.8]);
+            addGeoJSONLayer(map,"./ladder1.geojson", [153, 217, 234, 0.8]);
 
             // Sự kiện click để lấy tọa độ và sao chép vào clipboard
             view.on("click", function(event) {
