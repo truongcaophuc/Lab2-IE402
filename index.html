@@ -89,7 +89,21 @@
                         type: "extrude",
                         size: 120,
                         material: {
+<<<<<<< refs/remotes/origin/hieu
                             color: "#bcd7d8"
+=======
+                            color: [204, 220, 237, 0.4]
+                        },
+                        transform: {
+                            rotate: {
+                                x: 90,  // Xoay 30 độ quanh trục X để tạo độ nghiêng
+                                y: 0,
+                                z: 0
+                            },
+                            translate: {
+                                z: 100  // Dịch chuyển đối tượng lên cao 10 đơn vị trên trục Z
+                            }
+>>>>>>> local
                         }
                     }]
                 }
@@ -102,7 +116,24 @@
                         type: "extrude",
                         size: 2,
                         material: {
+<<<<<<< refs/remotes/origin/hieu
                             color: "#bcd7d8"
+=======
+                            color: "#f2ebc4"
+                        }
+                    }]
+                }
+            };
+            railing1.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 10,
+                        material: {
+                            color: [188, 215, 216, 0.4]
+>>>>>>> local
                         }
                     }]
                 }
@@ -115,7 +146,7 @@
                         type: "extrude",
                         size: 10,
                         material: {
-                            color: "#bcd7d8"
+                            color: [188, 215, 216, 0.4]
                         }
                     }]
                 }
@@ -128,7 +159,7 @@
                         type: "extrude",
                         size: 10,
                         material: {
-                            color: "#bcd7d8"
+                            color: [188, 215, 216, 0.4]
                         }
                     }]
                 }
@@ -141,12 +172,42 @@
                         type: "extrude",
                         size: 10,
                         material: {
-                            color: "#bcd7d8"
+                            color: [188, 215, 216, 0.4]
                         }
                     }]
                 }
             };
+<<<<<<< refs/remotes/origin/hieu
             layout6.renderer = {
+=======
+            pillar.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 80,
+                        material: {
+                            color: [193, 193, 193, 0.4]
+                        }
+                    }]
+                }
+            };
+            bacthem.renderer = {
+                type: "simple",
+                symbol: {
+                    type: "polygon-3d",
+                    symbolLayers: [{
+                        type: "extrude",
+                        size: 2,
+                        material: {
+                            color: "#f2ebc4"
+                        }
+                    }]
+                }
+            };
+            railing_bacthem.renderer = {
+>>>>>>> local
                 type: "simple",
                 symbol: {
                     type: "polygon-3d",
@@ -159,6 +220,10 @@
                     }]
                 }
             };
+            // const layers = [building, floor, railing1, railing2, railing3, railing4, pillar, bacthem, railing_bacthem];
+            // layers.forEach(layer => {
+            //     layer.renderer.symbol.symbolLayers[0].material.color = [204, 220, 237, 0.5]; // Thay màu và alpha tại đây
+            // });
             // Khởi tạo bản đồ
             const map = new Map({
                 basemap: "topo-vector",
@@ -174,6 +239,12 @@
                 zoom: 19,
                 popup: { defaultPopupTemplateEnabled: true }
             });
+<<<<<<< refs/remotes/origin/hieu
+=======
+            addGeoJSONLayer(map,"./ladder1.geojson", [153, 217, 234]);
+            addGeoJSONLayer(map,"./roof.geojson", "#c1c1c1");
+            addGeoJSONLayer(map,"./window.geojson", [93,123,150,0.4]);
+>>>>>>> local
 
             // Sự kiện click để lấy tọa độ và sao chép vào clipboard
             view.on("click", function(event) {
